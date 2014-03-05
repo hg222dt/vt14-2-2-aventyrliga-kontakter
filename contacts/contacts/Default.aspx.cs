@@ -34,7 +34,17 @@ namespace contacts
 
         public void ContactListView_InsertItem(Contact Contact)
         {
-            Service.SaveContact(Contact);
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Service.SaveContact(Contact);
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError(String.Empty, "Fel inträffade när kontakt skulle läggas till.");
+                }
+            }
         }
 
         public void ContactListView_UpdateItem(int ContactID)
@@ -58,7 +68,6 @@ namespace contacts
             {
                 ModelState.AddModelError(String.Empty, "Oväntat fel inträffade när kontaktuppgiften skulle uppdateras");
             }
-
         }
 
         public void ContactListView_DeleteItem(int ContactID)
