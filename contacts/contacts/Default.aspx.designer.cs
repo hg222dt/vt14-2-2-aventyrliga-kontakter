@@ -31,13 +31,22 @@ namespace contacts {
         protected global::System.Web.UI.WebControls.ListView ContactListView;
         
         /// <summary>
-        /// Label1 control.
+        /// statusMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Panel statusMessage;
+        
+        /// <summary>
+        /// LabelStatusMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelStatusMessage;
         
         /// <summary>
         /// ValidationSummary1 control.

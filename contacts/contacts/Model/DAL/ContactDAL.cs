@@ -103,14 +103,12 @@ namespace contacts.Model.DAL
 
                 totalRowCount = (int)cmd.Parameters["@RecordCount"].Value;
 
-
                 using (var reader = cmd.ExecuteReader())
                 {
                     var contactIdIndex = reader.GetOrdinal("ContactID");
                     var firstNameIndex = reader.GetOrdinal("FirstName");
                     var lastNameIndex = reader.GetOrdinal("LastName");
                     var emailAddressIndex = reader.GetOrdinal("EmailAddress");
-
 
                     while (reader.Read())
                     {
@@ -127,7 +125,6 @@ namespace contacts.Model.DAL
                 contacts.TrimExcess();
 
                 return contacts;
-
             }
 
         }

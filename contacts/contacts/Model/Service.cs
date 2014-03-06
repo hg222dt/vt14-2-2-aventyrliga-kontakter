@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 using contacts.Model.DAL;
+
 
 namespace contacts.Model
 {
@@ -30,17 +32,40 @@ namespace contacts.Model
             return ContactDAL.GetContactsPageWise(maximumRows, startRowIndex, out totalRowCount);
         }
 
-        public void SaveContact(Contact Contact)
+        public void SaveContact(Contact contact)
         {
-            if (Contact.ContactId == 0)
+            ICollection<ValidationResult> validationResults;
+            if(!contact.Validate(out validationResults))
             {
-                ContactDAL.InsertContact(Contact);
+                var ex = new ValidationException("Objektet klararde inte valideringen.");
+                ex.Data.Add("ValidationResults", validationResults);
+                throw ex;
+            }
+
+            if (contact.ContactId == 0)
+            {
+                ContactDAL.InsertContact(contact);
             }
             else
             { 
-                ContactDAL.UpdateContact(Contact);
+                ContactDAL.UpdateContact(contact);
             }
         }
+
+        //public static void Myvalidate(object instance)
+        //{
+        //    var validationContext = new ValidationContext(instance);
+        //    var validationResults = new List<ValidationResult>();
+
+        //    if(!Validator.TryValidateObject(instance, validationContext, validationResults true))
+        //    {
+        //        var ex = new ValidationException("Objektet klarade inte valideringen.");
+
+        //        ex.Data.Add("ValidationResults", validationResults);
+
+        //        throw ex;
+        //    }
+        //}
 
         public void DeleteContact(int contactID)
         {

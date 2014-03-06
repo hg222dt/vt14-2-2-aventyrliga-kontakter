@@ -189,16 +189,17 @@
                                 <asp:LinkButton CommandName="Update" runat="server" Text="Uppdatera" />
                             </td>
                             <td>
-                                <asp:LinkButton CommandName="Cancel" runat="server" Text="Rensa" CausesValidation="false" />
+                                <asp:LinkButton CommandName="Cancel" runat="server" Text="Avbryt" CausesValidation="false" />
                             </td>
                         </tr>
                     </EditItemTemplate>
                 </asp:ListView>
             </div>
-            <div id="statusMessage">
+            <asp:Panel ID="statusMessage" runat="server" Visible="False">
                 <p>
-                    <asp:Label ID="Label1" runat="server" Text="" Visible="false"></asp:Label>
+                    <asp:Label ID="LabelStatusMessage" runat="server" Text="" Visible="false"></asp:Label>
                 </p>
+                <a id="CloseLink2">Stäng meddelande</a>
                 <p>
                     <asp:ValidationSummary 
                         ID="ValidationSummary1" 
@@ -217,7 +218,17 @@
                         ValidationGroup="EditGroup" 
                         ShowModelStateErrors="false" />
                 </p>
-            </div>
+            </asp:Panel>
         </form>
+        <script type="text/javascript">
+            setTimeout(function () {
+                var closeLink = document.getElementById("CloseLink2");
+                var statusDiv = document.getElementById("statusMessage");
+                console.log(closeLink);
+                closeLink.onclick = function () {
+                    statusDiv.parentElement.removeChild(statusDiv);
+                };
+            }, 1000);
+        </script>
     </body>
 </html>
