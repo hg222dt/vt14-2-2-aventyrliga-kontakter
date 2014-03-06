@@ -28,6 +28,11 @@ namespace contacts
                 LabelStatusMessage.Visible = true;
                 Session.Remove("Status");
             }
+            else
+            {
+                statusMessage.Visible = false;
+                LabelStatusMessage.Visible = false;
+            }
         }
 
         public IEnumerable<Contact> ContactListView_GetData()
@@ -47,7 +52,6 @@ namespace contacts
                 try
                 {
                     Service.SaveContact(Contact);
-
                     Session["Status"] = true;
                     var status = "Kontakten har lagts till!";
                     Response.Redirect("~/Default.aspx?status=" + status);

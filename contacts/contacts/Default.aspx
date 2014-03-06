@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head runat="server">
         <title>Äventyrliga kontakter</title>
+        <link rel="stylesheet" href="css/styles.css" />
     </head>
     <body>
         <form id="form1" runat="server">
@@ -199,7 +200,7 @@
                 <p>
                     <asp:Label ID="LabelStatusMessage" runat="server" Text="" Visible="false"></asp:Label>
                 </p>
-                <a id="CloseLink2">Stäng meddelande</a>
+                <a href="#" id="CloseLink2">Stäng meddelande</a>
                 <p>
                     <asp:ValidationSummary 
                         ID="ValidationSummary1" 
