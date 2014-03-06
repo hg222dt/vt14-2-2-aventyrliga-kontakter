@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace contacts.Model
 {
+    //Hanterar och validerar en kontakts data på servern.
     public class Contact
     {
         public int ContactId { get; set; }

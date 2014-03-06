@@ -10,6 +10,7 @@
     <body>
         <form id="form1" runat="server">
             <div>
+                <%-- Listview-kontroll för att kunna skriva ut alla kontakter i en tabell --%>
                 <asp:ListView ID="ContactListView" runat="server"
                     ItemType="contacts.Model.Contact"
                     SelectMethod="ContactListView_GetDataPageWise"
@@ -89,7 +90,7 @@
                             <tr>
                                 <td>
                                     <%-- Visas om kontaktuppgifter inte existerar i databasen --%>
-
+                                    Inga kontaker existerar i databasen.
                                 </td>
                             </tr>
                         </table>
@@ -148,6 +149,7 @@
                     <EditItemTemplate>
                         <tr>
                             <td>
+                                <%-- Kontroller för att editera och validera kontakter. --%>
                                 <asp:TextBox ID="UpdateFirstNameTB" runat="server" Visible="true" Text='<%#: BindItem.FirstName %>' MaxLength="50" />
                                 <asp:RequiredFieldValidator 
                                     ID="RequiredFieldValidator1" 
@@ -196,12 +198,16 @@
                     </EditItemTemplate>
                 </asp:ListView>
             </div>
+
+            <%-- Felmeddelande --%>
             <asp:Panel ID="statusMessage" runat="server" Visible="False">
                 <p>
                     <asp:Label ID="LabelStatusMessage" runat="server" Text="" Visible="false"></asp:Label>
                 </p>
                 <a href="#" id="CloseLink2">Stäng meddelande</a>
             </asp:Panel>
+            
+            <%-- Valideringar som utlöses om något blir fel --%>
             <p>
                 <asp:ValidationSummary 
                     ID="ValidationSummary1" 
@@ -221,6 +227,8 @@
                     ShowModelStateErrors="false" />
             </p>
         </form>
+
+        <%-- Skript ger funktionalitet åt länk att stänga av meddelandet --%>
         <script type="text/javascript">
             setTimeout(function () {
                 var closeLink = document.getElementById("CloseLink2");

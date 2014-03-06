@@ -19,32 +19,39 @@ namespace contacts
             get { return _service ?? (_service = new Service()); }
         }
 
+        //Anropas när sidan laddas
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Iteration som infaller om sessionen status returnerar "true"
             if (Session["Status"] as bool? == true)
             {
+                //Meddelande visas och skrivs ut.
                 LabelStatusMessage.Text = Request.QueryString["status"];
                 statusMessage.Visible = true;
                 LabelStatusMessage.Visible = true;
                 Session.Remove("Status");
             }
             else
-            {
+            {   
+                //Meddelande visas inte.
                 statusMessage.Visible = false;
                 LabelStatusMessage.Visible = false;
             }
         }
 
+        //Metod för att häömta all tillgänglig data ur databasen.
         public IEnumerable<Contact> ContactListView_GetData()
         {
             return Service.GetContacts(); 
         }
 
+        //Metod för att hämta data ur databasen sidovis.
         public IEnumerable<Contact> ContactListView_GetDataPageWise(int maximumRows, int startRowIndex, out int totalRowCount)
         {
             return Service.GetContactsPageWise(maximumRows, startRowIndex, out totalRowCount);
         }
 
+        //Metod som hanterar att lägga till en kontakt.
         public void ContactListView_InsertItem(Contact Contact)
         {
             if (ModelState.IsValid)
@@ -76,6 +83,7 @@ namespace contacts
             }
         }
 
+        //Metod som uppdaterar en kontakts uppgifter.
         public void ContactListView_UpdateItem(int ContactID)
         {
             try
@@ -102,6 +110,7 @@ namespace contacts
             }
         }
 
+        //Metod som raderar en kontakt.
         public void ContactListView_DeleteItem(int ContactID)
         {
             try

@@ -10,6 +10,7 @@ namespace contacts.Model.DAL
 {
     public class ContactDAL
     {
+        //Tillhandalhåller fält för connectionstring för att ansluta till servern.
         #region Fält
         /// <summary>
         /// Sträng med information som används för att ansluta till "SQL-server"-databasen.
@@ -43,6 +44,7 @@ namespace contacts.Model.DAL
         }
         #endregion
 
+        //Hämtar alla kontakter från datalagret
         public IEnumerable<Contact> GetContacts()
         {
             string connectionString = WebConfigurationManager.ConnectionStrings["contactConnectionString"].ConnectionString;
@@ -84,6 +86,7 @@ namespace contacts.Model.DAL
 
         }
 
+        //Hämtar kontakter sidovis från datalagret
         public IEnumerable<Contact> GetContactsPageWise(int maximumRows, int startRowIndex, out int totalRowCount)
         {
             using (var conn = CreateConnection())
@@ -129,6 +132,7 @@ namespace contacts.Model.DAL
 
         }
 
+        //Hämtar specifik kontakt från datalagret
         public Contact GetContactById(int ContactID)
         {
             using (var conn = CreateConnection())
@@ -172,6 +176,7 @@ namespace contacts.Model.DAL
             }
         }
 
+        //Lägger till kontakt i datalagret
         public void InsertContact(Contact Contact)
         {
             using (var conn = CreateConnection())
@@ -201,6 +206,7 @@ namespace contacts.Model.DAL
             }
         }
 
+        //Uppdaterar kontakt i datalagret.
         public void UpdateContact(Contact Contact)
         {
             //Skapar och initierar anslutningobjekt
@@ -228,6 +234,7 @@ namespace contacts.Model.DAL
             }
         }
 
+        //Tar bort kontakt i datalagret.
         public void DeleteContact(int ContactID)
         {
             //Skapar och initierar anslutningobjekt
