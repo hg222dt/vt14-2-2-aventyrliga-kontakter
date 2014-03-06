@@ -52,21 +52,6 @@ namespace contacts.Model
             }
         }
 
-        //public static void Myvalidate(object instance)
-        //{
-        //    var validationContext = new ValidationContext(instance);
-        //    var validationResults = new List<ValidationResult>();
-
-        //    if(!Validator.TryValidateObject(instance, validationContext, validationResults true))
-        //    {
-        //        var ex = new ValidationException("Objektet klarade inte valideringen.");
-
-        //        ex.Data.Add("ValidationResults", validationResults);
-
-        //        throw ex;
-        //    }
-        //}
-
         public void DeleteContact(int contactID)
         {
             ContactDAL.DeleteContact(contactID);
