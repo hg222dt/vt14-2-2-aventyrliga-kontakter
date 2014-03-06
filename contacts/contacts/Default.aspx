@@ -201,25 +201,25 @@
                     <asp:Label ID="LabelStatusMessage" runat="server" Text="" Visible="false"></asp:Label>
                 </p>
                 <a href="#" id="CloseLink2">Stäng meddelande</a>
-                <p>
-                    <asp:ValidationSummary 
-                        ID="ValidationSummary1" 
-                        runat="server" 
-                        HeaderText="Ett fel har inträffat. Gör om, gör rätt!" />
-                    <asp:ValidationSummary 
-                        ID="ValidationSummary2" 
-                        runat="server" 
-                        HeaderText="Ett fel har inträffat. Gör om, gör rätt!" 
-                        ValidationGroup="InsertGroup" 
-                        ShowModelStateErrors="false" />
-                    <asp:ValidationSummary 
-                        ID="ValidationSummary3" 
-                        runat="server" 
-                        HeaderText="Ett fel har inträffat. Gör om, gör rätt!" 
-                        ValidationGroup="EditGroup" 
-                        ShowModelStateErrors="false" />
-                </p>
             </asp:Panel>
+            <p>
+                <asp:ValidationSummary 
+                    ID="ValidationSummary1" 
+                    runat="server" 
+                    HeaderText="Ett fel har inträffat. Gör om, gör rätt!" />
+                <asp:ValidationSummary 
+                    ID="ValidationSummary2" 
+                    runat="server" 
+                    HeaderText="Ett fel har inträffat. Gör om, gör rätt!" 
+                    ValidationGroup="InsertGroup" 
+                    ShowModelStateErrors="false" />
+                <asp:ValidationSummary 
+                    ID="ValidationSummary3" 
+                    runat="server" 
+                    HeaderText="Ett fel har inträffat. Gör om, gör rätt!" 
+                    ValidationGroup="EditGroup" 
+                    ShowModelStateErrors="false" />
+            </p>
         </form>
         <script type="text/javascript">
             setTimeout(function () {
